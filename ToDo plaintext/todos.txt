@@ -1,0 +1,6 @@
+scrub
+shower
+delete
+lift
+Vacum
+scrub again
