@@ -1,6 +1,5 @@
 scrub
 shower
-delete
-lift
 Vacum
 scrub again
+Comb the dog
