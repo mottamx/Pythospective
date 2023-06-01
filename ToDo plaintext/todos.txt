@@ -1,7 +1,6 @@
-scrub
 shower
-Vacum the sofa
 scrub again
 Clean the bag
 Fix the machine
 Clean the cup
+Brush dog

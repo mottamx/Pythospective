@@ -13,6 +13,13 @@ def get_todos():
         todos = file.readlines()
     return todos
 
+def write_todos(todos_write):
+    """
+    Function to write the todo listo to a file
+    """
+    with open(r'ToDo plaintext\todos.txt', 'w') as file:
+        file.writelines(todos_write)
+
 
 while True:
     user = input("Type add, show, edit, complete or exit: ")
@@ -22,8 +29,7 @@ while True:
         todo = user[4:] #List slicing
         todos = get_todos()
         todos.append(todo+'\n')
-        with open(r'ToDo plaintext\todos.txt', 'w') as file:
-            file.writelines(todos)
+        write_todos(todos)
     elif user.startswith('show'):
         todos=get_todos()
         #new_todos=[item.strip('\n') for item in todos] #List comprehension   
@@ -38,8 +44,7 @@ while True:
             new_todo=input("Enter a new todo: ")
             todos = get_todos()
             todos[number-1]=new_todo + '\n'
-            with open(r'ToDo plaintext\todos.txt', 'w') as file:
-                file.writelines(todos)
+            write_todos(todos)
         except ValueError:
             print("Your command is not valid, edit expects a number")
             continue
@@ -49,8 +54,7 @@ while True:
             number = int(text)
             todos = get_todos()
             todos.pop(number - 1)
-            with open(r'ToDo plaintext\todos.txt', 'w') as file:
-                file.writelines(todos)
+            write_todos(todos)
         except IndexError:
             print("The number is out of range")
             continue            
