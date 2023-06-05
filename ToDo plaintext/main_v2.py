@@ -3,22 +3,7 @@
 #in one single instruction
 
 import sys
-
-def get_todos():
-    """
-    Function to copy the todo list from file to a list variable
-    Returns: list containing the todo list
-    """
-    with open(r'ToDo plaintext\todos.txt', 'r') as file:
-        todos = file.readlines()
-    return todos
-
-def write_todos(todos_write):
-    """
-    Function to write the todo listo to a file
-    """
-    with open(r'ToDo plaintext\todos.txt', 'w') as file:
-        file.writelines(todos_write)
+import functions as fnct
 
 
 while True:
@@ -27,11 +12,11 @@ while True:
     
     if user.startswith('add'):
         todo = user[4:] #List slicing
-        todos = get_todos()
+        todos = fnct.get_todos()
         todos.append(todo+'\n')
-        write_todos(todos)
+        fnct.write_todos(todos)
     elif user.startswith('show'):
-        todos=get_todos()
+        todos=fnct.get_todos()
         #new_todos=[item.strip('\n') for item in todos] #List comprehension   
         for index, item in enumerate(todos):
             item = item.strip('\n').title()
@@ -42,9 +27,9 @@ while True:
             text = user[5:].strip()
             number = int(text)
             new_todo=input("Enter a new todo: ")
-            todos = get_todos()
+            todos = fnct.get_todos()
             todos[number-1]=new_todo + '\n'
-            write_todos(todos)
+            fnct.write_todos(todos)
         except ValueError:
             print("Your command is not valid, edit expects a number")
             continue
@@ -52,9 +37,9 @@ while True:
         try:
             text = user[9:].strip()
             number = int(text)
-            todos = get_todos()
+            todos = fnct.get_todos()
             todos.pop(number - 1)
-            write_todos(todos)
+            fnct.write_todos(todos)
         except IndexError:
             print("The number is out of range")
             continue            
